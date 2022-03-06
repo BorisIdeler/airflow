@@ -2,26 +2,30 @@ pipeline {
     agent any
     stages {
         stage('build') {
-            stage('airflow') {
-                stage('airflow-base') {
-                    steps {
-                        sh 'docker build ./airflow/docker/airflow/base/. -t borisideler/airflow-base:latest'
+            parallel {
+                stage('airflow') {
+                    stage('airflow-base') {
+                        steps {
+                            sh 'docker build ./airflow/docker/airflow/base/. -t borisideler/airflow-base:latest'
+                        }
                     }
-                }
-                stage('airflow-webserver') {
-                    steps {
-                        sh 'docker build ./airflow/docker/airflow/webserver/. -t borisideler/airflow-webserver:latest'
+                    stage('airflow-webserver') {
+                        steps {
+                            sh 'docker build ./airflow/docker/airflow/webserver/. -t borisideler/airflow-webserver:latest'
+                        }
                     }
-                }
-                stage('airflow-scheduler') {
-                    steps {
-                        sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-scheduler:latest'
+                    stage('airflow-scheduler') {
+                        steps {
+                            sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-scheduler:latest'
+                        }
                     }
                 }
             }
+            
         }
         stage('test') {
-            stage('airflow') {
+            parallel {
+                stage('airflow') {
                 stages {
                     stage('airflow-base') {
                         steps {
@@ -38,8 +42,8 @@ pipeline {
                             sh 'docker run borisideler/airflow-scheduler:latest airflow version'
                         }
                     }
-                }
-            }            
+                }            
+            }                        
         }
     }
 }
