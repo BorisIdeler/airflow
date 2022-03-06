@@ -44,12 +44,6 @@ RUN pip install --upgrade pip && \
     pip install apache-airflow[crypto,celery,postgres,mysql,ssh,docker,hdfs]==${AIRFLOW_VERSION} --constraint /requirements-python3.9.txt
 #--constraint /requirements-python3.5.txt
 
-# Copy the entrypoint.sh from host to container (at path AIRFLOW_HOME)
-COPY ./entrypoint.sh ./entrypoint.sh
-
-# Set the entrypoint.sh file to be executable
-RUN chmod +x ./entrypoint.sh
-
 # Set the owner of the files in AIRFLOW_HOME to the user airflow
 RUN chown -R airflow: ${AIRFLOW_HOME}
 
