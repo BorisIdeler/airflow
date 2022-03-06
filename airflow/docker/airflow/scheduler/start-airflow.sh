@@ -4,6 +4,6 @@
 cd $AIRFLOW_HOME
 
 # Initiliase the metadatabase
-airflow initdb
+airflow db init
 
 exec airflow scheduler

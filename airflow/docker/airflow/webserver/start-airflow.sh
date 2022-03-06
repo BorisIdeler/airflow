@@ -4,7 +4,7 @@
 cd $AIRFLOW_HOME
 
 # Initiliase the metadatabase
-airflow initdb
+airflow db init
 
 # Run the scheduler in background
 # airflow scheduler &> /dev/null &
