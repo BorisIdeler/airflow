@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                sh 'docker build ./airflow/docker/airflow/base/. -t borisideler/airflow-base'
-                sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-webserver'
-                sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-scheduler'
+                sh 'docker build ./airflow/docker/airflow/base/. -t borisideler/airflow-base:latest'
+                sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-webserver:latest'
+                sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-scheduler:latest'
             }
         }
     }
