@@ -64,6 +64,3 @@ RUN mkdir dags
 
 # Expose ports (just to indicate that this container needs to map port)
 EXPOSE 8080
-
-# Execute the entrypoint.sh
-ENTRYPOINT [ "/entrypoint.sh" ]
