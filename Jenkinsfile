@@ -26,23 +26,24 @@ pipeline {
         stage('test') {
             parallel {
                 stage('airflow') {
-                stages {
-                    stage('airflow-base') {
-                        steps {
-                            sh 'docker run borisideler/airflow-base:latest airflow version'                        
+                    stages {
+                        stage('airflow-base') {
+                            steps {
+                                sh 'docker run borisideler/airflow-base:latest airflow version'                        
+                            }
                         }
-                    }
-                    stage('airflow-webserver') {
-                        steps {
-                            sh 'docker run borisideler/airflow-webserver:latest airflow version'
+                        stage('airflow-webserver') {
+                            steps {
+                                sh 'docker run borisideler/airflow-webserver:latest airflow version'
+                            }
                         }
-                    }
-                    stage('airflow-scheduler') {
-                        steps {
-                            sh 'docker run borisideler/airflow-scheduler:latest airflow version'
+                        stage('airflow-scheduler') {
+                            steps {
+                                sh 'docker run borisideler/airflow-scheduler:latest airflow version'
+                            }
                         }
-                    }
-                }            
+                    } 
+                }           
             }                        
         }
     }
