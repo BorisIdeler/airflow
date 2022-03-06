@@ -1,4 +1,4 @@
-FROM airflow-base:latest
+FROM borisideler/airflow-base:latest
 
 # Copy the entrypoint.sh from host to container (at path AIRFLOW_HOME)
 COPY ./start-airflow.sh ./start-airflow.sh

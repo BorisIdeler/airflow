@@ -4,10 +4,6 @@
 cd $AIRFLOW_HOME
 
 # Initiliase the metadatabase
-# airflow initdb
+airflow initdb
 
-# Run the scheduler in background
-# airflow scheduler &> /dev/null &
-
-# Run the web sever in foreground (for docker logs)
 exec airflow scheduler
