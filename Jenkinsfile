@@ -10,7 +10,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'docker -it borisideler/airflow-base:latest airflow'
+                sh 'docker run borisideler/airflow-base:latest airflow'
             }
         }
     }
