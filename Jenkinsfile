@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls'
-                sh 'docker build ./airflow/docker/airflow/. -t borisideler/airflow'
+                sh 'docker build ./airflow/docker/airflow/base/. -t borisideler/airflow-base'
             }
         }
     }
