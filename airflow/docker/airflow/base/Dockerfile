@@ -1,6 +1,6 @@
 # Base Image
 FROM python:3.9
-LABEL maintainer="BorisIdeler"
+LABEL maintainer="borisideler"
 
 # Arguments that can be set with docker build
 ARG AIRFLOW_VERSION=1.10.15
@@ -8,6 +8,7 @@ ARG AIRFLOW_HOME=/usr/local/airflow
 
 # Export the environment variable AIRFLOW_HOME where airflow will be installed
 ENV AIRFLOW_HOME=${AIRFLOW_HOME}
+ENV AIRFLOW_VERSION=${AIRFLOW_VERSION}
 
 # Install dependencies and tools
 RUN apt-get update -yqq && \

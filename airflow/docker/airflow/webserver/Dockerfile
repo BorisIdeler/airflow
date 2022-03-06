@@ -4,7 +4,11 @@ FROM borisideler/airflow-base:latest
 COPY ./start-airflow.sh ./start-airflow.sh
 
 # Set the entrypoint.sh file to be executable
+USER root
+
 RUN chmod +x ./start-airflow.sh
+
+USER airflow
 
 # Expose ports (just to indicate that this container needs to map port)
 EXPOSE 8080

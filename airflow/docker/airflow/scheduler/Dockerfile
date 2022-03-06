@@ -4,8 +4,10 @@ FROM borisideler/airflow-base:latest
 COPY ./start-airflow.sh ./start-airflow.sh
 
 # Set the entrypoint.sh file to be executable
+USER root
+
 RUN chmod +x ./start-airflow.sh
 
-RUN mkdir -p ${AIRFLOW_HOME}/dags
+USER airflow
 
 CMD [ "start-airflow.sh" ]
