@@ -8,5 +8,10 @@ pipeline {
                 sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-scheduler:latest'
             }
         }
+        stage('test') {
+            steps {
+                sh 'docker -it borisideler/airflow-base:latest airflow'
+            }
+        }
     }
 }
