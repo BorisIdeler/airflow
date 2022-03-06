@@ -56,6 +56,3 @@ WORKDIR ${AIRFLOW_HOME}
 
 # Create the dags folder which will contain the DAGs
 RUN mkdir dags
-
-# Expose ports (just to indicate that this container needs to map port)
-EXPOSE 8080
