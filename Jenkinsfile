@@ -4,21 +4,23 @@ pipeline {
         stage('build') {
             parallel {
                 stage('airflow') {
-                    stage('airflow-base') {
-                        steps {
-                            sh 'docker build ./airflow/docker/airflow/base/. -t borisideler/airflow-base:latest'
+                    stages {
+                        stage('airflow-base') {
+                            steps {
+                                sh 'docker build ./airflow/docker/airflow/base/. -t borisideler/airflow-base:latest'
+                            }
                         }
-                    }
-                    stage('airflow-webserver') {
-                        steps {
-                            sh 'docker build ./airflow/docker/airflow/webserver/. -t borisideler/airflow-webserver:latest'
+                        stage('airflow-webserver') {
+                            steps {
+                                sh 'docker build ./airflow/docker/airflow/webserver/. -t borisideler/airflow-webserver:latest'
+                            }
                         }
-                    }
-                    stage('airflow-scheduler') {
-                        steps {
-                            sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-scheduler:latest'
+                        stage('airflow-scheduler') {
+                            steps {
+                                sh 'docker build ./airflow/docker/airflow/scheduler/. -t borisideler/airflow-scheduler:latest'
+                            }
                         }
-                    }
+                    }                    
                 }
             }
             
